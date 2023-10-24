@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta name="viewport" content="width=device-width" initial-scale="1">
+    <title>Sign Up Form</title>
+    <link rel="stylesheet" href="./style.css">
+    <link href="./bootstrap.css">
+    <script src="./script.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+</head>
+<body>
+<!--<div class="greeting-container">
+    <p class="greeting">HELLO THERE!</p>
+</div>-->
+<div id="contentContainer"></div>
+<form method="post" class="container">
+    <div class="form-column">
+        <div id="login" class="float-start">
+            <div class="login active">
+                <a href="#" id="loginLink">Log In</a>
+            </div>
+            <div class="signup">
+                <a href="#" id="signupHeading" class="signupLink">Sign Up</a>
+            </div>
+        </div>
+
+        <div class="content">
+            <div class="inside-content">
+
+                <i class="fas fa-user"></i>
+                <input type="text" placeholder="Username" class="transparent-input" name="username" id="usernameInput">
+
+                <br>
+
+                <label for="phone-number"></label>
+                <i class="fas fa-phone"></i>
+                <input type="number" name="phone-number" placeholder="Phone Number" id="phone-num" class="transparent-input">
+
+                <br>
+
+                <i class="fas fa-envelope"></i>
+                <input type="email" placeholder="Email" class="transparent-input" name="email" id="email">
+
+                <br>
+
+                <label for="password"></label>
+                <i class="fas fa-lock"></i>
+                <input type="password" name placeholder="Password" class="transparent-input" name="password" id="password" min="8" max="15" pattern="[0-9a-zA-Z]" required>
+                <span id="togglePassword" class="password-toggle"><i class="fas fa-eye" id="togglePasswordIcon"></i></span>
+
+                <br>
+
+                <label for="confirmPw"></label>
+                <i class="fas fa-lock"></i>
+                <input type="password" placeholder="Confirm Password" class="transparent-input" name="confirmPw" id="confirmPw" min="8" max="15" pattern="[0-9 a-z A-Z]"  required>
+                <!-- <span><i class="fas fa-eye" id="toggleConfirmPwIcon"></i></span> -->
+
+                <div id="passwordErrorMessage"></div>
+
+
+            </div>
+        </div>
+        <input type="checkbox" name="agreement" id="" class="agreement">
+        <label for="agreement" class="agreement">I agree with terms & conditions</label>
+        <br>
+        <div class="btn">
+            <button id="register" type="submit">Register</button>
+        </div>
+    </div>
+</form>
+<br>
+<div id="message"></div>
+<script src="./bootstrap.js"></script>
+</body>
+</html>
