@@ -1,5 +1,10 @@
 document.addEventListener("DOMContentLoaded", function (event) {
 
+    checkEmail()
+    checkAllInputs()
+    // checkPasswords()
+
+
     function displayMessage(event) {
         let username = document.querySelector("#usernameInput").value
         let message = document.querySelector("#message")
@@ -93,30 +98,11 @@ document.addEventListener("DOMContentLoaded", function (event) {
         checkPhoneNumber()
     })
 
-    // check email
-
-    let emailErrorMessage = document.querySelector("#emailErrorMessage") 
-
-    function checkEmail() { 
-
-     let email = document.querySelector("#email").value
-     if (email === "") {
-        emailErrorMessage.innerHTML = "Input your email address"
-        emailErrorMessage.style.color = "red"
-     } else {
-        emailErrorMessage.innerHTML = ""
-     }   
-    }
-
-    document.querySelector("#email").addEventListener("input", function () {
-        checkEmail()
-    })
 
 
     // check password
 
     let passwordErrorMessage = document.querySelector("#passwordErrorMessage")
-    let signupHeading = document.querySelector('#signupHeading')
 
     function checkPasswords() {
         let password = document.querySelector("#password").value
@@ -125,10 +111,13 @@ document.addEventListener("DOMContentLoaded", function (event) {
             passwordErrorMessage.innerHTML = "Password doesn't match"
             passwordErrorMessage.style.color = 'red'
             
+        } else if (password === "" || confirmPw === "") {
+            passwordErrorMessage.innerHTML = "Input a password"
+            passwordErrorMessage.style.color = 'red'
         } else {
             passwordErrorMessage.innerHTML = "Password Verified!"
             passwordErrorMessage.style.color = 'green'
-        } 
+        }
     }
 
     document.querySelector("#confirmPw").addEventListener("input", function () {
@@ -186,19 +175,22 @@ togglePassword.addEventListener('click', function (event) {
 // add an underline to active page
     signupHeading.classList.toggle('active')
 
-// load login page dynamically
 
-
-let loginLink = document.querySelector("#loginLink");
-let contentContainer = document.querySelector("#contentContainer");
-let signupLink = document.querySelector("#signupHeading");
-let signupContainer = document.querySelector("#signupContainer")
-
-loginLink.addEventListener("click", function (event) {
-  event.preventDefault();
-  //Hide the signup form
-  signupContainer.style.display = "none";
-  //Display the login form, sane as doing it in the html
-  window.location.href = "login-index.html"
-});
+ let emailErrorMessage = document.querySelector("#emailErrorMessage") 
+ 
+function checkEmail() {
+    document.querySelector("#email").addEventListener("input", function () {
+        let email = document.querySelector("#email").value
+        let validEmailPattern = /(^.+(gmail\.com|yahoo\.com)$)/
+    
+        if (validEmailPattern.test(email)) {
+            emailErrorMessage.innerHTML = "Valid Email"
+            emailErrorMessage.style.color = "green"
+        } else {
+            emailErrorMessage.innerHTML = "Invalid Email"
+            emailErrorMessage.style.color = "red"
+        }
+    
+    }) 
+}
 })
