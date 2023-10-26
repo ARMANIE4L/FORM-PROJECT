@@ -56,7 +56,23 @@ justify-content: end;
     align-items: center;
 }
 
+#usernameInput{
+    margin-top: 30px;
+}
+
 .transparent-input {
+    background: transparent;
+    margin-top: 15px;
+    border-bottom: 1px white solid;
+    border-top: transparent;
+    border-right: transparent;
+    transition: border-color 0.3s;
+    color: rgb(255, 255, 255);
+    transition: all 2s;
+    opacity: 100%;
+}
+
+.login-transparent-input {
     background: transparent;
     margin-top: 40px;
     border-bottom: 1px white solid;
@@ -67,7 +83,6 @@ justify-content: end;
     transition: all 2s;
     opacity: 100%;
 }
-
 
 
 .transparent-input:focus{
@@ -96,6 +111,8 @@ label {
 
 .agreement {
     margin-top: 30px;
+    font-size: 0.9em;
+    text-align: center;
 }
 
 .btn {
@@ -168,6 +185,7 @@ padding: 20px;
 }
 .fingerprint:hover{
     background-color: gray;
+    border-radius: 10px;
 }
 
 .fingerprint:focus{
@@ -189,15 +207,27 @@ padding: 20px;
     margin-top: 8px;
 }
 
-#passwordErrorMessage {
-    color: rgb(209, 8, 8);
-    font-size: 0.7em;
+ 
+#userErrorMessage,
+#phoneErrorMessage,
+#emailErrorMessage,
+#passwordErrorMessage,
+#termsErrorMessage {
+    color: red;
+    font-size: 0.65em;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
-    margin-top: 3px;
+    margin-top: 8px;
 }
 
 #signupHeading.active {
     text-decoration: underline;
     text-decoration-thickness: 3px;
     
+}
+
+.tc {
+    color: rgb(175, 45, 45);
+}
+.tc:hover {
+    color: rgb(78, 35, 35);
 }

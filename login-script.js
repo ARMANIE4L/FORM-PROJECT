@@ -7,10 +7,30 @@ document.addEventListener("DOMContentLoaded", function (event) {
         let message = document.querySelector("#message")
     
         message.innerHTML = 'Ooops! '+ "<br>" + "I can see you clicked the button um... " + username + ". I knew you would click it despite my instructions... so nothing's here actually, this is just a one page project with no backend job yet so i honestly ain't sure where you were actually expecting to land...hahaha." + "<br>" +  "Thanks so much for checking out my project. Have a lovely day " + username + "!"
+        message.style.border = '1px solid'
     }
 
     document.querySelector("#register").addEventListener('click', function (event) {
-        displayMessage()
+        let username = document.querySelector("#usernameInput").value
+        let password = document.querySelector("#password").value
+
+        let isValid = true
+
+        if (username === "") {
+            alert("Please enter a username") 
+            isValid = false
+        }
+        if (password === '') {
+             alert("Please enter a password") 
+             isValid = false  
+        }
+
+        if (!isValid) {
+           event.preventDefault() 
+           checkAllInputs()
+        } else {
+            displayMessage(event)
+        }
     })
 
 
@@ -20,6 +40,42 @@ document.addEventListener("DOMContentLoaded", function (event) {
         }
     }
 
+    function checkAllInputs() {
+        
+        //check username
+        let userErrorMessage = document.querySelector("#userErrorMessage")
+        
+        function checkUsername() {
+            let username = document.querySelector("#usernameInput").value
+            if (username === "") {
+                userErrorMessage.innerHTML = "Input a username"
+                userErrorMessage.style.color = 'red'
+            } else {
+                userErrorMessage.innerHTML = ""
+            }
+        }
+
+        document.querySelector("#usernameInput").addEventListener("input", function () {
+            checkUsername()
+        })
+
+    // check password
+
+    let passwordErrorMessage = document.querySelector("#passwordErrorMessage")
+
+    function checkPasswords() {
+        let password = document.querySelector("#password").value
+        if (password === "") {
+            passwordErrorMessage.innerHTML = "Input password"
+        } else {
+            passwordErrorMessage.innerHTML = ""
+        } 
+    }
+
+    document.querySelector("#confirmPw").addEventListener("input", function () {
+        checkPasswords()
+    })
+    }
 
     document.querySelector("#register").addEventListener("keydown", function (event) {
         handleKeyPress()
@@ -33,6 +89,7 @@ document.addEventListener("DOMContentLoaded", function (event) {
     document.querySelector("#fingerprint").addEventListener("click", function (event) {
         bioText()
     })
+    
 // TogglePassword
 let passwordInput = document.querySelector("#password");
 let togglePassword = document.querySelector('#togglePassword');
@@ -47,6 +104,8 @@ togglePassword.addEventListener('click', function (event) {
   }
 });
 
+
+
 // add an underline to active page
 signupHeading.classList.toggle('active')
 
@@ -54,43 +113,16 @@ signupHeading.classList.toggle('active')
 let signupLink = document.querySelector("#signupLink")
 let loginLink = document.querySelector(".loginLink")
 let contentContainer = document.querySelector("#contentContainer")
+let loginContainer = document.querySelector("#loginContainer")
 
 
 signupLink.addEventListener("click", function (event) {
-    event.preventDefault()
-    fetch("index.html")
-    .then(function (response) {
-        if (response.status === 200) {
-            return response.text()
-        } else {
-            throw  new Error ('Error loading signup.html')
-        }
-    })
-    .then(function (data) {
-        contentContainer.innerHTML = data
-    })
-    .catch (function (error) {
-        console.error();
-    })
-})
+    //Hide the login form
+    loginContainer.style.display = "none";
 
-//go back to login
-
-loginLink.addEventListener("click", function (event) {
     event.preventDefault()
-    fetch("login-index.html")
-    .then(function (response) {
-        if (response.status === 200) {
-            return response.text()
-        } else {
-            throw  new Error ('Error loading login.html')
-        }
+    window.location.href = "index.html"
     })
-    .then(function (data) {
-        contentContainer.innerHTML = data
-    })
-    .catch (function (error) {
-        console.error();
-    })
-})
+
+    // function checkInputs(event) {
 })
